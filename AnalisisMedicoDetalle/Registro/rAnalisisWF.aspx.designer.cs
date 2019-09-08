@@ -49,6 +49,24 @@ namespace AnalisisMedicoDetalle.Registro {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator IdRegularExpressionValidator;
         
         /// <summary>
+        /// FechaTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox FechaTextBox;
+        
+        /// <summary>
+        /// RFVFFecha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVFFecha;
+        
+        /// <summary>
         /// PacienteDropDownList control.
         /// </summary>
         /// <remarks>

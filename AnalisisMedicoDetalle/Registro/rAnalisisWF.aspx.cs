@@ -14,20 +14,8 @@ namespace AnalisisMedicoDetalle.Registro
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            TipoAnalisis tipo = new TipoAnalisis();
-
-            if (!Page.IsPostBack)
-            {
-                RepositorioBase<TipoAnalisis> repositorioBase = new RepositorioBase<TipoAnalisis>(new Contexto());
-
-                TipoDropDownList.DataSource = repositorioBase.GetList(t => true);
-                TipoDropDownList.DataValueField = "TipoAnalisiId";
-                TipoDropDownList.DataTextField = "Descripcion";
-                TipoDropDownList.DataBind();
-
-                ViewState["Analisis"] = new Analisis();
-            }
+            ViewState["Analisis"] = new Analisis();
+            BindGrid();
 
 
         }
@@ -35,6 +23,7 @@ namespace AnalisisMedicoDetalle.Registro
         {
             DetalleGridView.DataSource = ((Analisis)ViewState["Analisis"]).Detalles;
             DetalleGridView.DataBind();
+        
         }
 
         public Analisis LlenarClase()
@@ -133,17 +122,19 @@ namespace AnalisisMedicoDetalle.Registro
 
         protected void AgregarButton_Click1(object sender, EventArgs e)
         {
-           
-            Analisis analisis = new Analisis();
+            Analisis Analisis = new Analisis();
 
-            analisis = (Analisis)ViewState["analisis"];
-            analisis.AgregarDetalle(0, analisis.AnalisisId,
-               0, ResultadoTextBox.Text);
+            Analisis = (Analisis)ViewState["Analisis"];
 
-            ViewState["analisis"] = analisis;
+            Analisis.Detalles.Add(new DetalleAnalisis(0,TipoDropDownList.SelectedItem.ToString(), ResultadoTextBox.Text));
+
+            ViewState["Detalles"] = Analisis.Detalles;
 
             this.BindGrid();
-            ResultadoTextBox.Text = "";
+
+           // Grid.Columns[1].Visible = false;
+
+            ResultadoTextBox.Text = string.Empty;
 
         }
     }
