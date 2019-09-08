@@ -10,23 +10,26 @@
      </div>
 
       <%--Entradas de las consulta--%>
-        <div class="form-group">
-                <div class="col-md-4">
-                        <asp:DropDownList ID="FiltroDropDownList" runat="server" Class="form-control input-sm" style="font-size:medium">
-                                <asp:ListItem Selected="True">Todo</asp:ListItem>
-                                <asp:ListItem>UsuarioId</asp:ListItem>
-                                <asp:ListItem>Nombres</asp:ListItem>
-                                <asp:ListItem>Usuario</asp:ListItem>
-                                <asp:ListItem>Tipo</asp:ListItem>
-                                <asp:ListItem>Fecha</asp:ListItem>
-                        </asp:DropDownList>
+        <div class="form-group row">
+              <label for="Filtro" class="col-sm-1 col-form-label">Filtro</label>
+            <div class="col-md-2">
+                    <asp:DropDownList ID="FiltroDropDown" runat="server" CssClass="form-control input-sm" >
+                        <asp:ListItem>Todo</asp:ListItem>
+                        <asp:ListItem>ID</asp:ListItem>
+                        <asp:ListItem>Paciente</asp:ListItem>
+                    </asp:DropDownList>
                 </div>
+                <label for="CheckBox" class="col-sm-1 col-form-label">Fecha?</label>
+                <div class="col-xs-1">
+                    <asp:CheckBox runat="server" CssClass="custom-checkbox" ID="CheckBoxFecha" />
+                </div>
+            </div>
             
                 <div class="col-md-6">
                      <asp:TextBox ID="CriterioTextBox" runat="server"  class="form-control input-sm" style="font-size:medium"></asp:TextBox>
                 </div>
                 <div class="col-md-2">
-                    <asp:Button ID="BuscarButton" runat="server" Text="Buscar" class="btn btn-primary"/>
+                    <asp:Button ID="BuscarButton" runat="server" Text="Buscar" class="btn btn-primary" OnClick="BuscarButton_click"/>
                 </div>
             </div>
          <br/>
@@ -58,8 +61,8 @@
                     <Columns>
                         <asp:HyperLinkField ControlStyle-ForeColor="#0094ff"
                             HeaderText="Opciones"
-                            DataNavigateUrlFields="UsuarioId"
-                            DataNavigateUrlFormatString="/Registros/rUsuarios.aspx?Id={0}"
+                            DataNavigateUrlFields="AnalisisId"
+                            DataNavigateUrlFormatString="/Registros/rAnalsis.aspx?Id={0}"
                             Text="Editar">
                         </asp:HyperLinkField>
                     </Columns>

@@ -28,5 +28,12 @@ namespace AnalisisMedicoDetalle.Utilitarios
                 page.ClientScript.RegisterStartupScript(page.GetType(), "toastr_message",
                       String.Format("toastr.{0}('{1}', '{2}');", type.ToLower(), message, title), addScriptTags: true);
             }
-        }
+            public static DateTime ToDateTime(string valor)
+            {
+                DateTime retorno = DateTime.Now;
+                DateTime.TryParse(valor, out retorno);
+
+                return retorno;
+            }
+    }
 }

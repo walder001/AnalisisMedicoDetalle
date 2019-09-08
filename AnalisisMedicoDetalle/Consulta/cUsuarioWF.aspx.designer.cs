@@ -22,13 +22,22 @@ namespace AnalisisMedicoDetalle.Consulta {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// FiltroDropDownList control.
+        /// FiltroDropDown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList FiltroDropDownList;
+        protected global::System.Web.UI.WebControls.DropDownList FiltroDropDown;
+        
+        /// <summary>
+        /// CheckBoxFecha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBoxFecha;
         
         /// <summary>
         /// CriterioTextBox control.
