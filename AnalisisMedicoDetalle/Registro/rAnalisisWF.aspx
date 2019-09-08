@@ -1,7 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="rAnalisisWF.aspx.cs" Inherits="AnalisisMedicoDetalle.Registro.rAnalisisWF" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="rAnalisisWF.aspx.cs" Inherits="AnalisisMedicoDetalle.Registro.rAnalisisWF" EnableEventValidation="false" ValidateRequest="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+
     <div class="container">
         <div class="panel panel-primary">
             <div class="panel-heading">Registro de Categorias</div>
@@ -18,12 +20,15 @@
                             <asp:RegularExpressionValidator ID="IdRegularExpressionValidator" runat="server" ControlToValidate="AnalisisId" ErrorMessage="Porfavor ingrese un numero" ValidationExpression="(^\d*\.?\d*[0-9]+\d*$)|(^[0-9]+\d*\.\d*$)" ValidationGroup="Buscar"></asp:RegularExpressionValidator>
                         </div>
                     </div>
-                    <%--Fecha--%> 
-                <div class="col-md-2 col-md-offset-2">            
-                    <asp:Label Text="Fecha" runat="server" />
-                    <asp:TextBox ID="FechaTextBox" class="form-control input-sm" TextMode="Date" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RFVFFecha" ValidationGroup="Guardar" ControlToValidate="FechaTextBox" runat="server" ErrorMessage="*" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-                </div>
+                     <div class="form-group">
+                        <label for="FechaTextBox" class="col-md-3 control-label input-sm">Fecha</label>
+                        <div class="col-md-8">
+                             <asp:TextBox ID="FechaTextBox" class="form-control input-sm" TextMode="Date" runat="server"></asp:TextBox>
+                             <asp:RequiredFieldValidator ID="FechaRequiredFieldValidator1" ValidationGroup="Guardar" ControlToValidate="FechaTextBox" runat="server" ErrorMessage="*" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+
+                 
 
 
                 <div class="form-group">

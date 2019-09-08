@@ -22,6 +22,7 @@ namespace AnalisisMedicoDetalle.Consulta
                 HastaTextBox.Text = DateTime.Today.ToString("yyyy-MM-dd");
             }
 
+
         }
 
         protected void BuscarButton_click(object sender, EventArgs e)
