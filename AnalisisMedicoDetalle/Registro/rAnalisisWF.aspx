@@ -5,11 +5,11 @@
 
 
     <div class="container">
-        <div class="panel panel-primary">
+        <div class="panel-primary">
             <div class="panel-heading">Registro de Categorias</div>
 
-            <div class="panel-body">
-                <div class="form-horizontal col-md-12" role="form">
+            <div>
+                <div>
 
                     <div class="form-group">
                         <label for="PresupuestoTextBox" class="col-md-3 control-label input-sm">AnalisisId</label>

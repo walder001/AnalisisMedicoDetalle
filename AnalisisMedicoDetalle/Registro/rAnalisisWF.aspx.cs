@@ -1,4 +1,5 @@
-﻿using BLL;
+﻿using AnalisisMedicoDetalle.Utilitarios;
+using BLL;
 using DAL;
 using Entidades;
 using System;
@@ -12,6 +13,8 @@ namespace AnalisisMedicoDetalle.Registro
 {
     public partial class rAnalisisWF : System.Web.UI.Page
     {
+        private List<DetalleAnalisis> detalles = new List<DetalleAnalisis>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             ViewState["Analisis"] = new Analisis();
@@ -31,18 +34,20 @@ namespace AnalisisMedicoDetalle.Registro
             Analisis analisis = new Analisis();
 
             analisis = (Analisis)ViewState["Analisis"];
-
-            analisis.AnalisisId = Utilitarios.Utils.ToInt(AnalisisId.Text);
-            /*analisis.FechaAnalisis = DescripcionTextBox.Text;*/
-
+            analisis.AnalisisId = Utils.ToInt(AnalisisId.Text);
+            analisis.FechaAnalisis = Utils.ToDateTime(FechaTextBox.Text);
+            analisis.PacienteId = Utils.ToInt(PacienteDropDownList.SelectedValue);
+            analisis.Detalles = detalles;
             return analisis;
+
         }
 
         public void LlenarCampos(Analisis analisis)
         {
-            Limpiar();
-            /*PresupuestoTextBox.Text = presupuesto.PresupuestoId.ToString();
-            DescripcionTextBox.Text = presupuesto.Descripcion;*/
+            ((Analisis)ViewState["Analisis"]).Detalles = analisis.Detalles;
+            AnalisisId.Text = Convert.ToString(analisis.AnalisisId);
+            FechaTextBox.Text = analisis.FechaAnalisis.ToString("yyyy-MM-dd");
+            PacienteDropDownList.SelectedValue = Convert.ToString(analisis.PacienteId);
 
             this.BindGrid();
         }
