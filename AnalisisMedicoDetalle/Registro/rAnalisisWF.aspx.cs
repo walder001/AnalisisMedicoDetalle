@@ -5,6 +5,7 @@ using Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -13,8 +14,8 @@ namespace AnalisisMedicoDetalle.Registro
 {
     public partial class rAnalisisWF : System.Web.UI.Page
     {
-        private List<DetalleAnalisis> detalles = new List<DetalleAnalisis>();
-
+        public Analisis ana = new Analisis();
+        private List<Analisis> analis = new List<Analisis>();
         protected void Page_Load(object sender, EventArgs e)
         {
             ViewState["Analisis"] = new Analisis();
@@ -37,7 +38,7 @@ namespace AnalisisMedicoDetalle.Registro
             analisis.AnalisisId = Utils.ToInt(AnalisisId.Text);
             analisis.FechaAnalisis = Utils.ToDateTime(FechaTextBox.Text);
             analisis.PacienteId = Utils.ToInt(PacienteDropDownList.SelectedValue);
-            analisis.Detalles = detalles;
+            analisis.Detalles = (List<DetalleAnalisis>)ViewState["Detalles"];
             return analisis;
 
         }
@@ -127,6 +128,26 @@ namespace AnalisisMedicoDetalle.Registro
 
         protected void AgregarButton_Click1(object sender, EventArgs e)
         {
+            List<DetalleAnalisis> detalles = new List<DetalleAnalisis>();
+            if (IsValid)
+            {
+                DateTime date = DateTime.Now.Date;
+                int paciente = Utils.ToInt(PacienteDropDownList.SelectedValue);
+                int tipo = Utils.ToInt(TipoDropDownList.SelectedValue);
+
+
+                if (DetalleGridView.Rows.Count != 0)
+                {
+                    ana.Detalles = (List<DetalleAnalisis>)ViewState["Detalles"];
+                }
+
+                DetalleAnalisis detalle = new DetalleAnalisis();
+                ana.Detalles.Add(new DetalleAnalisis(0, detalle.Analsis,ResultadoTextBox.Text));
+
+                ViewState["Detalles"] = ana.Detalles;
+                DetalleGridView.DataSource = ViewState["Detalle"];
+                DetalleGridView.DataBind();
+            }
             Analisis Analisis = new Analisis();
 
             Analisis = (Analisis)ViewState["Analisis"];
@@ -137,10 +158,11 @@ namespace AnalisisMedicoDetalle.Registro
 
             this.BindGrid();
 
-           // Grid.Columns[1].Visible = false;
+          //  DetalleGridView.Columns[1].Visible = false;
 
             ResultadoTextBox.Text = string.Empty;
 
         }
+       
     }
 }

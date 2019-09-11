@@ -6,10 +6,12 @@
 
     <div class="container">
         <div class="panel-primary">
-            <div class="panel-heading">Registro de Categorias</div>
-
-            <div>
-                <div>
+            <div class="panel-heading">
+             <p class="text-white bg-gradient-primary">Registro de Categoria</p>
+            </div>
+             
+            <div class="panel-body">
+                <div class="form-horizontal col-md-12" role="form">
 
                     <div class="form-group">
                         <label for="PresupuestoTextBox" class="col-md-3 control-label input-sm">AnalisisId</label>
@@ -61,6 +63,7 @@
                         </div>
                     </div>
 
+
                     <div class="row">
                         <asp:GridView ID="DetalleGridView" CssClass=" col-md-offset-4 col-sm-offset-4" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Width="244px" AutoGenerateColumns="true">
                             <AlternatingRowStyle BackColor="White" />
@@ -76,7 +79,7 @@
                             <SortedDescendingCellStyle BackColor="#E9EBEF" />
                             <SortedDescendingHeaderStyle BackColor="#4870BE" />
                         </asp:GridView>
-                    </div>
+                    </div> 
                 </div>
             </div>
 
