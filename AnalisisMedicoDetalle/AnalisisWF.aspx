@@ -2,35 +2,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<div class="container">
-  <h2>Modal Example</h2>
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  
-</div>
-
-
     <div class="container">
         <div class="panel-primary">
             <div class="panel-heading">
@@ -39,6 +10,8 @@
              
             <div class="panel-body">
                 <div class="form-horizontal col-md-12" role="form">
+
+
 
                     <div class="form-group">
                         <label for="PresupuestoTextBox" class="col-md-3 control-label input-sm">AnalisisId</label>
@@ -67,39 +40,7 @@
                         </div>
                     </div>
 
-                     <div class="container">
-                            <!-- Trigger the modal with a button -->
-                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#PacienteModal">Open Modal</button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="PacienteModal" role="dialog">
-                            <!-- Contenido-->
-                                <div class="container">
-                                <div class="panel-primary">
-                                    <div class="panel-heading">
-                                        <p class="text-white bg-gradient-primary">Registro de Categoria</p>
-                                    </div>
-                                    <%--Atrubutos Paciente --%>
-
-                                    <%-- Fin de atrubutos --%>
-             
-                                    <div class="panel-footer">
-                                        <div class="text-center">
-                                            <div class="form-group" style="display: inline-block">
-                                                <asp:Button ID="LimpiarPaciente" CssClass=" col-md-4 col-sm-4 btn btn-primary" runat="server" Text="Limpiar" Height="2.5em" Width="10em"  OnClick="LimpiarPaciente_Click"  />
-                                                <asp:Button ID="GuardarPaciente" CssClass="col-md-4 col-sm-4 btn btn-success" runat="server" Text="Guardar" Height="2.5em" Width="10em" ValidationGroup="AgregarNuevo"  OnClick="GuardarPaciente_Click"/>
-                                                <asp:Button ID="EliminarPaciente" CssClass="col-md-4 col-sm-4 btn btn-danger" runat="server" Text="Eliminar" Height="2.5em" Width="10em" ValidationGroup="Eliminar"  OnClick="EliminarPaciente_Click"/>
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" CssClass="col-md-1 col-sm-1" runat="server" ControlToValidate="AnalisisId" ErrorMessage="Es necesario elegir un Presupuesto valido para eliminar" ValidationGroup="Eliminar">Porfavor elige un Presupuesto valido.</asp:RequiredFieldValidator>
-                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" CssClass="col-md-1 col-sm-1 col-md-offset-1 col-sm-offset-1" runat="server" ControlToValidate="AnalisisId" ErrorMessage="RegularExpressionValidator" ValidationExpression="\d+ " ValidationGroup="Eliminar" Visible="False"></asp:RegularExpressionValidator>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
-                            <!--- Final contenido -->
-                    </div>
-                    <!--- Final Modal -->
+                     
 
 
                     <div class="form-group">
@@ -143,7 +84,7 @@
                                         <div class="form-group">
                                             <label for="Descripcion" class="col-md-3 control-label input-sm">Descripcion</label>
                                             <div class="col-md-8">
-                                                <asp:TextBox ID="Descripcion" CssClass=" form-control " placeholder="Monto" runat="server" Height="2.5em"></asp:TextBox>
+                                                <asp:TextBox ID="Descripcion" CssClass=" form-control " placeholder="Descripcion" runat="server" Height="2.5em"></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="Descripcion" Display="Dynamic" ErrorMessage="Porfavor digite un monto valido..." ValidationGroup="AgregarDetalle">*</asp:RequiredFieldValidator>
                                             </div>
                                         </div>
@@ -224,7 +165,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 
 </asp:Content>
