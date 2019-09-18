@@ -5,29 +5,32 @@ using Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace AnalisisMedicoDetalle.Registro
+namespace AnalisisMedicoDetalle
 {
-    public partial class rAnalisisWF : System.Web.UI.Page
+    public partial class AnalisisWF : System.Web.UI.Page
     {
         public Analisis ana = new Analisis();
         private List<Analisis> analis = new List<Analisis>();
         protected void Page_Load(object sender, EventArgs e)
         {
-            ViewState["Analisis"] = new Analisis();
-            BindGrid();
+            if (!Page.IsPostBack)
+            {
+                ViewState["Analisis"] = new Analisis();
+                this.BindGrid();
 
+            }
 
         }
+
         protected void BindGrid()
         {
             DetalleGridView.DataSource = ((Analisis)ViewState["Analisis"]).Detalles;
             DetalleGridView.DataBind();
-        
+
         }
 
         public Analisis LlenarClase()
@@ -38,14 +41,13 @@ namespace AnalisisMedicoDetalle.Registro
             analisis.AnalisisId = Utils.ToInt(AnalisisId.Text);
             analisis.FechaAnalisis = Utils.ToDateTime(FechaTextBox.Text);
             analisis.PacienteId = Utils.ToInt(PacienteDropDownList.SelectedValue);
-            analisis.Detalles = (List<DetalleAnalisis>)ViewState["Detalles"];
             return analisis;
 
         }
 
         public void LlenarCampos(Analisis analisis)
         {
-            ((Analisis)ViewState["Analisis"]).Detalles = analisis.Detalles;
+            Limpiar();
             AnalisisId.Text = Convert.ToString(analisis.AnalisisId);
             FechaTextBox.Text = analisis.FechaAnalisis.ToString("yyyy-MM-dd");
             PacienteDropDownList.SelectedValue = Convert.ToString(analisis.PacienteId);
@@ -82,27 +84,73 @@ namespace AnalisisMedicoDetalle.Registro
                     "Error", "error");
             }
         }
-     
-       
+
+        private void LlenarValores()
+        {
+            List<DetalleAnalisis> detalle = new List<DetalleAnalisis>();
+
+
+            if (DetalleGridView.DataSource != null)
+            {
+                detalle = (List<DetalleAnalisis>)DetalleGridView.DataSource;
+            }
+
+        }
+        protected void AgregarButton_Click1(object sender, EventArgs e)
+        {
+
+            Analisis egreso = new Analisis();
+            egreso = (Analisis)ViewState["Analisis"];
+
+            egreso.AgregarDetalle(0,0, 0, ResultadoTextBox.Text);
+            ViewState["Analisis"] = egreso;
+
+            this.BindGrid();
+            LlenarValores();
+
+        }
+
+        protected void LimpiarButton_Click1(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
 
         protected void GuardarButton_Click(object sender, EventArgs e)
         {
             bool paso = false;
-            RepositorioAnalisis repositorio = new RepositorioAnalisis(new Contexto());
-            //todo: agregar demas validaciones
-            Analisis analisis = LlenarClase();
+            RepositorioBase<Analisis> repositorio = new RepositorioBase<Analisis>(new Contexto());
+            Analisis analisis = new Analisis();
 
-            if (Utilitarios.Utils.ToInt(AnalisisId.Text) == 0)
-                paso = repositorio.Guardar(analisis);
+            analisis = LlenarClase();
 
+            if (analisis.AnalisisId == 0)
+            {
+                repositorio.Guardar(analisis);
+                Limpiar();
+
+            }
             else
-                paso = repositorio.Modificar(analisis);
+            {
+                Analisis egre = new Analisis();
+                RepositorioBase<Analisis> repository = new RepositorioBase<Analisis>(new Contexto());
+                int id = Convert.ToInt32(AnalisisId.Text);
+                egre = repository.Buscar(id);
+
+                if (egre != null)
+                {
+                    paso = repository.Modificar(LlenarClase());
+                }
+                else
+                    Response.Write("<script>alert('Id no existe');</script>");
+
+            }
 
             if (paso)
             {
                 Utilitarios.Utils.ShowToastr(this, "Transacción exitosa", "Exito", "success");
                 Limpiar();
             }
+
         }
 
         protected void EliminarButton_Click(object sender, EventArgs e)
@@ -118,51 +166,42 @@ namespace AnalisisMedicoDetalle.Registro
             }
             else
                 EliminarRequiredFieldValidator.IsValid = false;
+
         }
 
-        protected void LimpiarButton_Click1(object sender, EventArgs e)
+        protected void GuardarPaciente_Click(object sender, EventArgs e)
         {
-            Limpiar();
 
         }
 
-        protected void AgregarButton_Click1(object sender, EventArgs e)
+        protected void EliminarPaciente_Click(object sender, EventArgs e)
         {
-            List<DetalleAnalisis> detalles = new List<DetalleAnalisis>();
-            if (IsValid)
-            {
-                DateTime date = DateTime.Now.Date;
-                int paciente = Utils.ToInt(PacienteDropDownList.SelectedValue);
-                int tipo = Utils.ToInt(TipoDropDownList.SelectedValue);
-
-
-                if (DetalleGridView.Rows.Count != 0)
-                {
-                    ana.Detalles = (List<DetalleAnalisis>)ViewState["Detalles"];
-                }
-
-                DetalleAnalisis detalle = new DetalleAnalisis();
-                ana.Detalles.Add(new DetalleAnalisis(0, detalle.Analsis,ResultadoTextBox.Text));
-
-                ViewState["Detalles"] = ana.Detalles;
-                DetalleGridView.DataSource = ViewState["Detalle"];
-                DetalleGridView.DataBind();
-            }
-            Analisis Analisis = new Analisis();
-
-            Analisis = (Analisis)ViewState["Analisis"];
-
-            Analisis.Detalles.Add(new DetalleAnalisis(0,TipoDropDownList.SelectedItem.ToString(), ResultadoTextBox.Text));
-
-            ViewState["Detalles"] = Analisis.Detalles;
-
-            this.BindGrid();
-
-          //  DetalleGridView.Columns[1].Visible = false;
-
-            ResultadoTextBox.Text = string.Empty;
 
         }
-       
+
+        protected void LimpiarPaciente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void BuscarTipoAnalisis_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void LimpiarTipoAnalisis_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void GuardarTipoAnalisis_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void EliminarTipoAnalisis_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -3,6 +3,34 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+<div class="container">
+  <h2>Modal Example</h2>
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
 
     <div class="container">
         <div class="panel-primary">
@@ -64,20 +92,17 @@
                     </div>
 
 
+ 
                     <div class="row">
-                        <asp:GridView ID="DetalleGridView" CssClass=" col-md-offset-4 col-sm-offset-4" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Width="244px" AutoGenerateColumns="true">
-                            <AlternatingRowStyle BackColor="White" />
-
-                            <EditRowStyle BackColor="#2461BF" />
-                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                            <RowStyle BackColor="#EFF3FB" />
-                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                            <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                            <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                            <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                      
+                        <asp:GridView ID="DetalleGridView" runat="server" class="table table-condensed table-bordered table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#0066FF" GridLines="None">
+                            <AlternatingRowStyle BackColor="#999999" />
+                            <Columns>
+                                <asp:BoundField DataField="DetalleAnalsisId" HeaderText="Id" />
+                                <asp:BoundField DataField="Analsis" HeaderText="EgresoId" />
+                                <asp:BoundField DataField="Resultado" HeaderText="CategoriaId" />
+                            </Columns>
+                            <HeaderStyle BackColor="#003366" Font-Bold="True" />
                         </asp:GridView>
                     </div> 
                 </div>

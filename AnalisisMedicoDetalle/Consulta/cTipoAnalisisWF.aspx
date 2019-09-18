@@ -55,19 +55,18 @@
 
 
         <%--Grid--%>
-        <div class="table-responsive">
-            <asp:GridView ID="DatosGridView" runat="server" class="table table-condensed  table-responsive" CellPadding="6" ForeColor="#333333" GridLines="None">
-                <AlternatingRowStyle BackColor="White" />
-                    <Columns>
-                        <asp:HyperLinkField ControlStyle-ForeColor="#0094ff"
-                            HeaderText="Opciones"
-                            DataNavigateUrlFields="AnalisisId"
-                            DataNavigateUrlFormatString="/Registros/rAnalsis.aspx?Id={0}"
-                            Text="Editar">
-                        </asp:HyperLinkField>
-                    </Columns>
-                    <HeaderStyle BackColor="#0094ff" Font-Bold="true" ForeColor="black" />
-                    <RowStyle BackColor="#EFF3FB" />
-            </asp:GridView>>
-</div>
+    <div class="table-responsive">
+        <asp:GridView ID="DatosGridView" runat="server" class="table table-condensed  table-responsive" CellPadding="6" ForeColor="#333333" GridLines="None">
+            <AlternatingRowStyle BackColor="White" />
+            <Columns>
+                <asp:HyperLinkField ControlStyle-ForeColor="#0094ff"
+                    HeaderText="Opciones"
+                    DataNavigateUrlFields="AnalisisId"
+                    DataNavigateUrlFormatString="/Registros/rAnalsis.aspx?Id={0}"
+                    Text="Editar"></asp:HyperLinkField>
+            </Columns>
+            <HeaderStyle BackColor="#0094ff" Font-Bold="true" ForeColor="black" />
+            <RowStyle BackColor="#EFF3FB" />
+        </asp:GridView>
+    </div>
 </asp:Content>

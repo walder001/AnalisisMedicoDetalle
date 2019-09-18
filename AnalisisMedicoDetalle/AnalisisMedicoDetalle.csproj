@@ -100,6 +100,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AnalisisWF.aspx" />
     <Content Include="Consulta\cTipoAnalisisWF.aspx" />
     <Content Include="Consulta\cUsuarioWF.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -112,6 +113,7 @@
     <Content Include="Content\toastr.min.css" />
     <Content Include="css\sb-admin-2.css" />
     <Content Include="css\sb-admin-2.min.css" />
+    <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="img\undraw_posting_photo.svg" />
     <Content Include="js\demo\chart-area-demo.js" />
@@ -120,8 +122,12 @@
     <Content Include="js\demo\datatables-demo.js" />
     <Content Include="js\sb-admin-2.js" />
     <Content Include="js\sb-admin-2.min.js" />
-    <Content Include="Registro\rAnalisisWF.aspx" />
-    <Content Include="Registro\rTipoAnalisiWF.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="PagoWF.aspx" />
+    <Content Include="Reg\Example.aspx" />
+    <Content Include="Reg\rAnalisisWF.aspx" />
+    <Content Include="Reg\rTipoAnalisiWF.aspx" />
+    <Content Include="Reg\rUsuarioWf.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -1789,6 +1795,13 @@
     <Content Include="Site1.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnalisisWF.aspx.cs">
+      <DependentUpon>AnalisisWF.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AnalisisWF.aspx.designer.cs">
+      <DependentUpon>AnalisisWF.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Consulta\cTipoAnalisisWF.aspx.cs">
@@ -1805,23 +1818,58 @@
     <Compile Include="Consulta\cUsuarioWF.aspx.designer.cs">
       <DependentUpon>cUsuarioWF.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagoWF.aspx.cs">
+      <DependentUpon>PagoWF.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagoWF.aspx.designer.cs">
+      <DependentUpon>PagoWF.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registro\rAnalisisWF.aspx.cs">
+    <Compile Include="Reg\Example.aspx.cs">
+      <DependentUpon>Example.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reg\Example.aspx.designer.cs">
+      <DependentUpon>Example.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reg\rAnalisisWF.aspx.cs">
       <DependentUpon>rAnalisisWF.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Registro\rAnalisisWF.aspx.designer.cs">
+    <Compile Include="Reg\rAnalisisWF.aspx.designer.cs">
       <DependentUpon>rAnalisisWF.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Registro\rTipoAnalisiWF.aspx.cs">
+    <Compile Include="Reg\rTipoAnalisiWF.aspx.cs">
       <DependentUpon>rTipoAnalisiWF.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Registro\rTipoAnalisiWF.aspx.designer.cs">
+    <Compile Include="Reg\rTipoAnalisiWF.aspx.designer.cs">
       <DependentUpon>rTipoAnalisiWF.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reg\rUsuarioWf.aspx.cs">
+      <DependentUpon>rUsuarioWf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reg\rUsuarioWf.aspx.designer.cs">
+      <DependentUpon>rUsuarioWf.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Mobile.Master.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
@@ -1836,6 +1884,13 @@
     </Compile>
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Site2.Master.cs">
+      <DependentUpon>Site2.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site2.Master.designer.cs">
+      <DependentUpon>Site2.Master</DependentUpon>
     </Compile>
     <Compile Include="Utilitarios\Utils.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
@@ -2017,6 +2072,7 @@
     <Content Include="vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="vendor\jquery\jquery.min.map" />
     <Content Include="vendor\jquery\jquery.slim.min.map" />
+    <Content Include="Site2.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2027,6 +2083,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Registro\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
