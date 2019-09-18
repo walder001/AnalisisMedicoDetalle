@@ -101,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AnalisisWF.aspx" />
+    <Content Include="Consulta\cPago.aspx" />
     <Content Include="Consulta\cTipoAnalisisWF.aspx" />
     <Content Include="Consulta\cUsuarioWF.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -1806,6 +1807,13 @@
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Consulta\cPago.aspx.cs">
+      <DependentUpon>cPago.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consulta\cPago.aspx.designer.cs">
+      <DependentUpon>cPago.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Consulta\cTipoAnalisisWF.aspx.cs">
       <DependentUpon>cTipoAnalisisWF.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
