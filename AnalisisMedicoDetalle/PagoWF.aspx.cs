@@ -80,6 +80,7 @@ namespace AnalisisMedicoDetalle
 
         protected void LimpiarTipoAnalisis_Click(object sender, EventArgs e)
         {
+            Limpiar();
 
         }
 
@@ -153,6 +154,18 @@ namespace AnalisisMedicoDetalle
 
             DatosGridView.DataSource = pago.GetList(c => c.AnalisisId == id);
             DatosGridView.DataBind();
+        }
+
+        protected void AgregarButton_Click1(object sender, EventArgs e)
+        {
+
+            Pago pago = new Pago();
+            pago = (Pago)ViewState["Pago"];
+
+            pago.AgregarPago(0,AnalisisDropDown.SelectedIndex, Convert.ToDecimal(MontoAPagar.Text));
+            ViewState["Pago"] = pago;
+
+            this.BindGrid();
         }
     }
 

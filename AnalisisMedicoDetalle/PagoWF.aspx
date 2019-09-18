@@ -49,6 +49,8 @@
                                             <div class="col-md-8">
                                                 <asp:TextBox ID="MontoAPagar" CssClass=" form-control " placeholder="MontoAPagar" runat="server" Height="2.5em"></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="MontoAPagar" Display="Dynamic" ErrorMessage="Porfavor digite un monto valido..." ValidationGroup="AgregarDetalle">*</asp:RequiredFieldValidator>
+                                                 <asp:Button ID="Pagar" CssClass=" form-control btn btn-primary" runat="server" Text="Agregar" Height="2.5em" ValidationGroup="AgregarDetalle" OnClick="AgregarButton_Click1" />
+
                                             </div>
                                         </div>
                                             <%--Grid--%>
