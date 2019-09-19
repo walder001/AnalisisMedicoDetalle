@@ -17,7 +17,7 @@ namespace AnalisisMedicoDetalle
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            ViewState["Pago"] = new Pago();
+            base.ViewState["Pago"] = new Entidades.Pago();
             ValoresDeDropdowns();
             this.BindGrid();
 
@@ -25,16 +25,16 @@ namespace AnalisisMedicoDetalle
 
         protected void BindGrid()
         {
-            DatosGridView.DataSource = ((Pago)ViewState["Pago"]).DetallePagos;
+            DatosGridView.DataSource = ((Entidades.Pago)base.ViewState["Pago"]).DetallePagos;
             DatosGridView.DataBind();
 
         }
 
         public Pago LlenarClase()
         {
-            Pago pago = new Pago();
+            Entidades.Pago pago = new Entidades.Pago();
 
-            pago = (Pago)ViewState["Pago"];
+            pago = (Entidades.Pago)base.ViewState["Pago"];
             pago.PagoId = Utils.ToInt(PagoId.Text);
             pago.AnalisisId = Utils.ToInt(AnalisisDropDown.SelectedValue);
 
@@ -43,7 +43,7 @@ namespace AnalisisMedicoDetalle
 
         }
 
-        public void LlenarCampos(Pago pago)
+        public void LlenarCampos(Entidades.Pago pago)
         {
             Limpiar();
             PagoId.Text = Convert.ToString(pago.PagoId);
@@ -73,7 +73,7 @@ namespace AnalisisMedicoDetalle
             PagoId.Text = string.Empty;
             AnalisisDropDown.Text = string.Empty;
             
-            ViewState["Pago"] = new Pago();
+            base.ViewState["Pago"] = new Entidades.Pago();
             this.BindGrid();
 
         }
@@ -88,7 +88,7 @@ namespace AnalisisMedicoDetalle
         {
             bool paso = false;
             RepositorioPago repositorio = new RepositorioPago(new Contexto());
-            Pago pago = new Pago();
+            Entidades.Pago pago = new Entidades.Pago();
 
             pago = LlenarClase();
 
@@ -100,7 +100,7 @@ namespace AnalisisMedicoDetalle
             }
             else
             {
-                Pago egre = new Pago();
+                Entidades.Pago egre = new Entidades.Pago();
                 RepositorioPago repository = new RepositorioPago(new Contexto());
                 int id = Convert.ToInt32(AnalisisDropDown.SelectedIndex);
                 egre = repository.Buscar(id);
@@ -125,7 +125,7 @@ namespace AnalisisMedicoDetalle
         protected void EliminarTipoAnalisis_Click(object sender, EventArgs e)
         {
             RepositorioPago repositorio = new RepositorioPago(new Contexto());
-            Pago pago = new Pago();
+            Entidades.Pago pago = new Entidades.Pago();
 
             if (repositorio.Eliminar(Convert.ToInt32(AnalisisDropDown.SelectedIndex)))
             {
@@ -159,8 +159,8 @@ namespace AnalisisMedicoDetalle
         protected void AgregarButton_Click1(object sender, EventArgs e)
         {
 
-            Pago pago = new Pago();
-            pago = (Pago)ViewState["Pago"];
+            Entidades.Pago pago = new Entidades.Pago();
+            pago = (Entidades.Pago)base.ViewState["Pago"];
 
             pago.AgregarPago(0,AnalisisDropDown.SelectedIndex, Convert.ToDecimal(MontoAPagar.Text));
             ViewState["Pago"] = pago;

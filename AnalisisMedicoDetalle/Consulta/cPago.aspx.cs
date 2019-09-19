@@ -22,7 +22,7 @@ namespace AnalisisMedicoDetalle.Consulta
         protected void BuscarButton_click(object sender, EventArgs e)
         {
 
-            Expression<Func<Pago, bool>> Filtros = x => true;
+            Expression<Func<Entidades.Pago, bool>> Filtros = x => true;
             RepositorioPago repositorio = new RepositorioPago(new Contexto());
             List<Analisis> analises = new List<Analisis>();
 
