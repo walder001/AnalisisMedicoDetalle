@@ -100,7 +100,7 @@ namespace AnalisisMedicoDetalle
             else
             {
                 Pago egre = new Pago();
-                RepositorioPago repository = new RepositorioPago(new Contexto());
+                PagoBLL repository = new PagoBLL(new Contexto());
                 int id = Convert.ToInt32(PacienteDropDown.SelectedIndex);
                 egre = repository.Buscar(id);
 
@@ -123,7 +123,7 @@ namespace AnalisisMedicoDetalle
 
         protected void EliminarTipoAnalisis_Click(object sender, EventArgs e)
         {
-            RepositorioPago repositorio = new RepositorioPago(new Contexto());
+            PagoBLL repositorio = new PagoBLL(new Contexto());
             Entidades.Pago pago = new Entidades.Pago();
 
             if (repositorio.Eliminar(Convert.ToInt32(PacienteDropDown.SelectedIndex)))

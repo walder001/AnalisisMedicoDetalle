@@ -24,7 +24,7 @@ namespace BLL
                 {
                     foreach (var item in pago.DetallePagos)
                     {
-                        contexto.analisis.Find(item.AnalisisId).Balance += (decimal)item.MontoPagado;
+                        contexto.analisis.Find(item.AnalisisId).Balance -= (decimal)item.MontoPagado;
 
                     }
 
