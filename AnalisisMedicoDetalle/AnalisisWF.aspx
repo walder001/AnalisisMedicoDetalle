@@ -7,12 +7,13 @@
             <div class="panel-heading">
              <p class="text-white bg-gradient-primary">Registro de Categoria</p>
             </div>
+
+            <div class="form-group">
+
+            </div>
              
             <div class="panel-body">
                 <div class="form-horizontal col-md-12" role="form">
-
-
-
                     <div class="form-group">
                         <label for="PresupuestoTextBox" class="col-md-3 control-label input-sm">AnalisisId</label>
                         <div class="col-md-8">
@@ -33,13 +34,94 @@
                 <div class="form-group">
                         <label for="PacientesDropDownList" class="col-md-3 control-label input-sm">Pacientes</label>
                         <div class="col-md-8">
-                            <asp:DropDownList ID="PacienteDropDownList" CssClass=" form-control dropdown" AppendDataBoundItems="true" runat="server" Height="2.5em">
-                                <asp:ListItem Text="Juan" />
+                            <asp:DropDownList ID="PacienteDropDownList" CssClass=" form-control dropdown" AppendDataBoundItems="true" runat="server" Height="2.5em" OnSelectedIndexChanged="PacienteDropDownList_SelectedIndexChanged">
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="PacienteRequiredFieldValidator" CssClass="col-md-4 col-sm-4" runat="server" ControlToValidate="PacienteDropDownList" Display="Dynamic" ErrorMessage="Porfavor elige un paciente de egreso valido..." ValidationGroup="AgregarDetalle">Porfavor elige un paceinte de egreso valido...</asp:RequiredFieldValidator>
                         </div>
                     </div>
 
+                                        </div>
+                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#Modal">Open Modal</button>
+
+                   </div>
+
+                    <div class="container">
+                  <!-- Trigger the modal with a button -->
+
+                  <!-- Modal -->
+                     <div class="modal fade" id="Modal" role="dialog">
+                       <!-- Contenido-->
+                        <div class="container">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">Registro de Paciente</div>
+
+                                <div class="panel-body">
+                                    <div class="form-horizontal col-md-12" role="form">
+                                        <%--Tipo Analisis Id --%>
+                                        <div class="form-group">
+                                            <label for="PacienteId" class="col-md-3 control-label input-sm">Paciente Id</label>
+                                            <div class="col-md-8">
+                                                <asp:TextBox ID="PacienteId" CssClass=" form-control " placeholder="PacienteId" runat="server" Height="2.5em"></asp:TextBox>
+                                                <asp:Button ID="Buscar" CssClass=" form-control btn btn-primary" runat="server" Text="Buscar"  ValidationGroup="Buscar" OnClick="BuscarPaciente_Click"/>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="PacienteId" ErrorMessage="*" ValidationGroup="Buscar"></asp:RequiredFieldValidator>
+                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TipoAnalisisId" ErrorMessage="Porfavor ingrese un numero" ValidationExpression="(^\d*\.?\d*[0-9]+\d*$)|(^[0-9]+\d*\.\d*$)" ValidationGroup="Buscar"></asp:RegularExpressionValidator>
+                                            </div>
+                                        </div>
+                                        <%-- Descripcion --%>
+                                        <div class="form-group">
+                                            <label for="Nombre" class="col-md-3 control-label input-sm">Nombre</label>
+                                            <div class="col-md-8">
+                                                <asp:TextBox ID="Nombre" CssClass=" form-control " placeholder="Nombre" runat="server" Height="2.5em"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="Descripcion" Display="Dynamic" ErrorMessage="Porfavor digite un monto valido..." ValidationGroup="AgregarDetalle">*</asp:RequiredFieldValidator>
+                                            </div>
+                                        </div>
+
+                                          <%-- Balance --%>
+                                        <div class="form-group">
+                                            <label for="Balance" class="col-md-3 control-label input-sm">Balance</label>
+                                            <div class="col-md-8">
+                                                <asp:TextBox ID="Balance" CssClass=" form-control " type = "number" placeholder="Balance" runat="server" Height="2.5em"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="Balance" Display="Dynamic" ErrorMessage="Porfavor digite un monto valido..." ValidationGroup="AgregarDetalle">*</asp:RequiredFieldValidator>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <%-- Botones --%>
+                                <div class="panel-footer">
+                                    <div class="text-center">
+                                        <div class="form-group" style="display: inline-block">
+                                            <asp:Button ID="LiempiarPaciente" CssClass=" col-md-4 col-sm-4 btn btn-primary" runat="server" Text="Limpiar" Height="2.5em" Width="10em" OnClick="LimpiarPaciente_Click"/>
+                                            <asp:Button ID="GuardarPaciente" CssClass="col-md-4 col-sm-4 btn btn-success" runat="server" Text="Guardar" Height="2.5em" Width="10em" ValidationGroup="AgregarNuevo"  OnClick="GuardarPaciente_Click" />
+                                            <asp:Button ID="EliminarPaciente" CssClass="col-md-4 col-sm-4 btn btn-danger" runat="server" Text="Eliminar" Height="2.5em" Width="10em" ValidationGroup="Eliminar" OnClick="EliminarPaciente_Click" />
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" CssClass="col-md-1 col-sm-1" runat="server" ControlToValidate="TipoAnalisisId" ErrorMessage="Es necesario elegir un Presupuesto valido para eliminar" ValidationGroup="Eliminar">Porfavor elige un Presupuesto valido.</asp:RequiredFieldValidator>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator6" CssClass="col-md-1 col-sm-1 col-md-offset-1 col-sm-offset-1" runat="server" ControlToValidate="TipoAnalisisId" ErrorMessage="RegularExpressionValidator" ValidationExpression="\d+ " ValidationGroup="Eliminar" Visible="False"></asp:RegularExpressionValidator>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--- Final contenido -->
+           
+                </div>
+
+                 
+
+ 
+                    <div class="row">
+                      
+                        <asp:GridView ID="GridView1" runat="server" class="table table-condensed table-bordered table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#0066FF" GridLines="None">
+                            <AlternatingRowStyle BackColor="#999999" />
+                            <Columns>
+                                <asp:BoundField DataField="DetalleAnalsisId" HeaderText="Id" />
+                                <asp:BoundField DataField="AnalisisId" HeaderText="Id" />
+                                <asp:BoundField DataField="TipoAnalisisId" HeaderText="EgresoId" />
+                                <asp:BoundField DataField="Resultado" HeaderText="CategoriaId" />
+                            </Columns>
+                            <HeaderStyle BackColor="#003366" Font-Bold="True" />
+                        </asp:GridView>
+                    </div> 
+                </div>
                      
 
 
@@ -89,6 +171,15 @@
                                             </div>
                                         </div>
 
+                                           <%-- Precio --%>
+                                        <div class="form-group">
+                                            <label for="Precio" class="col-md-3 control-label input-sm">Descripcion</label>
+                                            <div class="col-md-8">
+                                                <asp:TextBox ID="Precio" CssClass=" form-control " placeholder="Precio" runat="server" Height="2.5em"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="Precio" Display="Dynamic" ErrorMessage="Porfavor digite un monto valido..." ValidationGroup="AgregarDetalle">*</asp:RequiredFieldValidator>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                                 <%-- Botones --%>
@@ -135,8 +226,7 @@
                         </div>
                     </div>
 
-
-
+                    
  
                     <div class="row">
                       

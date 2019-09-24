@@ -162,7 +162,7 @@ namespace AnalisisMedicoDetalle.Registro
             Analisis egreso = new Analisis();
 
             egreso = (Analisis)ViewState["Analisis"];
-            egreso.AgregarDetalle(0,0,0, ResultadoTextBox.Text);
+           // egreso.AgregarDetalle(0,0,0, ResultadoTextBox.Text,0);
             ViewState["Analisis"] = egreso;
 
             this.BindGrid();

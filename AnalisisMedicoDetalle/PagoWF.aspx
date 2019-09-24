@@ -26,14 +26,23 @@
                                             </div>
                                            </div>
                                        
-                                        <%-- Analsisis ID --%>
+                                        <%-- Paciente ID --%>
                                         <div class="form-group">
-                                            <label for="AnalisisId" class="col-md-3 control-label input-sm">Analisis</label>
+                                            <label for="PacienteId" class="col-md-3 control-label input-sm">Paciente</label>
                                             <div class="col-md-8">
-                                                <asp:DropDownList runat="server" ID="AnalisisDropDown" CssClass="form-control input-sm"></asp:DropDownList>
+                                                <asp:DropDownList runat="server" ID="PacienteDropDown" CssClass="form-control input-sm" OnSelectedIndexChanged="AnalisisDropDown_SelectedIndexChanged" OnTextChanged="AnalisisDropDown_TextChanged"></asp:DropDownList>
 
                                             </div>
-                                        </div>                                       
+                                        </div> 
+                                        
+                                        <%--Detalle Analisis --%>
+                                        <div class="form-group">
+                                            <label for="DetalleAnalisis" class="col-md-3 control-label input-sm">Analisis</label>
+                                            <div class="col-md-8">
+                                                <asp:DropDownList runat="server" ID="DetalleDropDownList1" CssClass="form-control input-sm" OnSelectedIndexChanged="DetalleDropDownList1_SelectedIndexChanged"></asp:DropDownList>
+
+                                            </div>
+                                        </div>
                                               <%--Monto Analisis--%>
                                         <div class="form-group">
                                             <label for="Monto" class="col-md-3 control-label input-sm">Monto</label>
@@ -49,8 +58,8 @@
                                             <div class="col-md-8">
                                                 <asp:TextBox ID="MontoAPagar" CssClass=" form-control " placeholder="MontoAPagar" runat="server" Height="2.5em"></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="MontoAPagar" Display="Dynamic" ErrorMessage="Porfavor digite un monto valido..." ValidationGroup="AgregarDetalle">*</asp:RequiredFieldValidator>
+                                                 <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Cargar Monto" />
                                                  <asp:Button ID="Pagar" CssClass=" form-control btn btn-primary" runat="server" Text="Agregar" Height="2.5em" ValidationGroup="AgregarDetalle" OnClick="AgregarButton_Click1" />
-
                                             </div>
                                         </div>
                                             <%--Grid--%>
@@ -60,9 +69,9 @@
                                                 <Columns>
                                                     <asp:HyperLinkField ControlStyle-ForeColor="#0094ff"
                                                         HeaderText="Opciones"
-                                                        DataNavigateUrlFields="DetalleAnalsisId"
-                                                        DataNavigateUrlFormatString="/AnalisisWF.aspx?Id={0}"
-                                                        Text="Editar"></asp:HyperLinkField>
+                                                        DataNavigateUrlFields="DetallePagoId"
+                                                        DataNavigateUrlFormatString="/PagoWF.aspx?Id={0}"
+                                                        Text="Eliminar"></asp:HyperLinkField>
                                                 </Columns>
                                                 <HeaderStyle BackColor="#0094ff" Font-Bold="true" ForeColor="black" />
                                                 <RowStyle BackColor="#EFF3FB" />

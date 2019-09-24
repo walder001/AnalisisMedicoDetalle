@@ -37,7 +37,7 @@ namespace AnalisisMedicoDetalle
 
             Analisis = (Analisis)ViewState["Analisis"];
 
-            Analisis.Detalles.Add(new DetalleAnalisis(0,0,0,"hola"));
+            //Analisis.Detalles.Add(new DetalleAnalisis(0,0,0,"hola",0));
 
             ViewState["Detalle"] = Analisis.Detalles;
 
