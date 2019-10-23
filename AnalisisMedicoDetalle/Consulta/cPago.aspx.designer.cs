@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AnalisisMedicoDetalle.Consulta {
-    
-    
-    public partial class cPago {
-        
+namespace AnalisisMedicoDetalle.Consulta
+{
+
+
+    public partial class cPago
+    {
+
         /// <summary>
         /// ScriptManager1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace AnalisisMedicoDetalle.Consulta {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.ScriptManager ScriptManager1;
-        
+
         /// <summary>
         /// FiltroDropDown control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace AnalisisMedicoDetalle.Consulta {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList FiltroDropDown;
-        
+
         /// <summary>
         /// CheckBoxFecha control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace AnalisisMedicoDetalle.Consulta {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBoxFecha;
-        
+
         /// <summary>
         /// CriterioTextBox control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace AnalisisMedicoDetalle.Consulta {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox CriterioTextBox;
-        
+
         /// <summary>
         /// BuscarButton control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace AnalisisMedicoDetalle.Consulta {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BuscarButton;
-        
+
         /// <summary>
         /// DesdeTextBox control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace AnalisisMedicoDetalle.Consulta {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox DesdeTextBox;
-        
+
         /// <summary>
         /// HastaTextBox control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace AnalisisMedicoDetalle.Consulta {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox HastaTextBox;
-        
+
         /// <summary>
         /// FechaCheckBox control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace AnalisisMedicoDetalle.Consulta {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox FechaCheckBox;
-        
+
         /// <summary>
         /// DatosGridView control.
         /// </summary>
@@ -92,5 +94,14 @@ namespace AnalisisMedicoDetalle.Consulta {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView DatosGridView;
+
+        /// <summary>
+        /// MyReportViewer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Microsoft.Reporting.WebForms.ReportViewer MyReportViewer;
     }
 }

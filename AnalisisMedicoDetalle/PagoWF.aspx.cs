@@ -67,6 +67,7 @@ namespace AnalisisMedicoDetalle
             PacienteDropDown.DataBind();
 
         }
+        
         public void Limpiar()
         {
             PagoId.Text = string.Empty;

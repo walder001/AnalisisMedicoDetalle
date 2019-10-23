@@ -2,6 +2,7 @@
 using BLL;
 using DAL;
 using Entidades;
+using Microsoft.Reporting.WebForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,21 +17,26 @@ namespace AnalisisMedicoDetalle.Consulta
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                RepositorioBase<DetallePago> repositorio = new RepositorioBase<DetallePago>(new Contexto());
+                var lista = repositorio.GetList(x => true);
 
+                MyReportViewer.ProcessingMode = ProcessingMode.Local;
+                MyReportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reportes\Pago.rdlc");
+                MyReportViewer.LocalReport.DataSources.Add(new ReportDataSource("Pago", lista));
+                MyReportViewer.LocalReport.Refresh();
+            }
         }
 
         protected void BuscarButton_click(object sender, EventArgs e)
         {
 
-            Expression<Func<Entidades.Pago, bool>> Filtros = x => true;
-            RepositorioPago repositorio = new RepositorioPago(new Contexto());
-            List<Analisis> analises = new List<Analisis>();
-
+            Expression<Func<DetallePago, bool>> Filtros = x => true;
+            RepositorioBase<DetallePago> repositorio = new RepositorioBase<DetallePago>(new Contexto());
 
             int id;
             id = Utils.ToInt(CriterioTextBox.Text);
-
-
 
             switch (FiltroDropDown.SelectedIndex)
             {
@@ -44,11 +50,20 @@ namespace AnalisisMedicoDetalle.Consulta
                     Filtros = c => c.AnalisisId == id;
                     break;
             }
-
-
             DatosGridView.DataSource = repositorio.GetList(Filtros);
             DatosGridView.DataBind();
-
         }
+
+
+        public void LlenaReport()
+        {
+         
+            RepositorioBase<DetallePago> repositorio = new RepositorioBase<DetallePago>(new Contexto());
+            MyReportViewer.ProcessingMode = ProcessingMode.Local;
+            MyReportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reportes\PagoReport.rdlc");
+            MyReportViewer.LocalReport.DataSources.Add(new ReportDataSource("PagoDetalle", repositorio.GetList(e => true)));
+            MyReportViewer.LocalReport.Refresh();
+        }
+
     }
 }
